@@ -1,0 +1,17 @@
+{
+  "name": "billingpro",
+  "version": "0.0.1",
+  "authors": [
+    "estiben <hestibencs@gmail.com>"
+  ],
+  "description": "Proceso de Facturacion",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "localhost:8000",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "bootstrap-material-design": "~0.3.0"
+  }
+}
