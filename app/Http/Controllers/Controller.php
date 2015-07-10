@@ -6,6 +6,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 
 abstract class Controller extends BaseController {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	use DispatchesCommands, ValidatesRequests;
 
 }

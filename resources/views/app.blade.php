@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>@section('title') BillingPro @show</title>
 	
-	{!! Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css') !!}
+	{!! Html::style('bower_components\bootstrap\dist\css\bootstrap.min.css') !!}
     {!! Html::style('bower_components\bootstrap-material-design\dist\css\material.min.css') !!}
     {!! Html::style('bower_components\bootstrap-material-design\dist\css\ripples.min.css') !!}
     {!! Html::style('bower_components\bootstrap-material-design\dist\css\material-fullpalette.min.css') !!}
@@ -36,7 +36,30 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{!! url('/') !!}">Home</a></li>
+
+					<li class="@if (Request::is('/','home')) active @endif"><a href="{!! url('/') !!}">Home</a></li>
+
+			        <li class="dropdown @if (Request::is('clientes/*','clientes')) active @endif">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Cliente <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			            <li class="@if (Request::is('clientes')) active @endif"><a href="{!! url('clientes') !!}">Clientes</a></li>
+			            <li class="@if (Request::is('clientes/create')) active @endif"><a href="{!! url('clientes/create') !!}">Nuevo</a></li>
+			          </ul>
+			        </li>
+			        <li class="dropdown @if (Request::is('productos/*','productos')) active @endif">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Producto <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			            <li class="@if (Request::is('productos')) active @endif"><a href="{!! url('productos') !!}">Productos</a></li>
+			            <li class="@if (Request::is('productos/create')) active @endif"><a href="{!! url('productos/create') !!}">Nuevo</a></li>
+			          </ul>
+			        </li>
+			        <li class="dropdown @if (Request::is('facturas/*','facturas')) active @endif">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Factura <span class="caret"></span></a>
+			          <ul class="dropdown-menu" role="menu">
+			            <li class="@if (Request::is('facturas')) active @endif"><a href="{!! url('facturas') !!}">Facturas</a></li>
+			            <li class="@if (Request::is('facturas/create')) active @endif"><a href="{!! url('facturas/create') !!}">Nuevo</a></li>
+			          </ul>
+			        </li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -56,7 +79,6 @@
 		</div>
 	</nav>
 	
-
 	<div class="container">
 		@yield('content')
 	</div>
@@ -72,6 +94,8 @@
             $.material.init();
         });
     </script>
+
+    @yield('scripts')
     
 </body>
 </html>

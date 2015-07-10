@@ -3,13 +3,17 @@
 
 @section('content')
 
-	<h1>Registrar Productos</h1>
+	<div class="col-lg-6">
+		<div class="well bs-component">
+			{!! Form::open(['route' => 'productos.store', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-	{!! Form::open(['route' => 'productos.store', 'class' => 'col-lg-12']) !!}
-
-		@include('productos.partials.form')
-
-	{!! Form::close() !!}
-
+				<fieldset>
+			    	<legend>Registrar Productos</legend>
+					@include('productos.partials.form')
+				</fieldset>
+				
+			{!! Form::close() !!}
+		</div>
+	</div>
 
 @endsection

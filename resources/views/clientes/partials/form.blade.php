@@ -1,4 +1,4 @@
-<div class="col-sm-6">
+<div class="col-sm-12">
 	
 	<div class="form-group">
 		{!! Form::text('nit', null, ['class' => 'form-control floating-label', 'placeholder' => 'NIT:', 'required']) !!}

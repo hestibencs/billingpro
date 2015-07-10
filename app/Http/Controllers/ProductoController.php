@@ -4,6 +4,9 @@ use App\Http\Requests\CreateProductoRequest;
 use App\Http\Controllers\Controller;
 
 use App\Producto;
+use Storage;
+use File;
+
 
 class ProductoController extends Controller {
 
@@ -14,7 +17,15 @@ class ProductoController extends Controller {
 	 */
 	public function index()
 	{
+
+		$public_path = public_path();
 		$productos = Producto::orderBy('nombre', 'asc')->paginate();
+
+		foreach($productos as $producto){
+			$url = $public_path.'/storage/'.$producto->imagen;
+			$producto->imagen = $url;
+		}
+
 		return view('productos.index', compact('productos'));
 	}
 
@@ -35,7 +46,36 @@ class ProductoController extends Controller {
 	 */
 	public function store(CreateProductoRequest $Request)
 	{
-		$producto = Producto::Create($Request->all());
+
+		//obtenemos el campo file definido en el formulario
+		$file = $Request->file('imagen');
+
+		//obtenemos el nombre del archivo
+		$nombreImagen = $file->getClientOriginalName();
+
+		//indicamos que queremos guardar un nuevo archivo en el disco local
+		Storage::disk('local')->put($nombreImagen, File::get($file));
+
+		$codigo = 		$Request->input('codigo');
+		$nombre = 		$Request->input('nombre');
+		$marca = 		$Request->input('marca');
+		$pvp = 			$Request->input('pvp');
+		$stock_minimo = $Request->input('stock_minimo');
+		$stock_maximo = $Request->input('stock_maximo');
+		$imagen = 		$nombreImagen;
+		$estado = 		$Request->input('estado');
+
+		$producto = Producto::Create([
+			'codigo' => $codigo, 
+			'nombre' => $nombre, 
+			'marca' => $marca, 
+			'pvp' => $pvp, 
+			'stock_minimo' => $stock_minimo, 
+			'stock_maximo' => $stock_maximo, 
+			'imagen' => $imagen, 
+			'estado' => $estado
+		]);
+		
 		return redirect('productos');
 	}
 

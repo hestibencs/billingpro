@@ -22,3 +22,5 @@ Route::controllers([
 
 Route::resource('clientes', 'ClienteController');
 Route::resource('productos', 'ProductoController');
+Route::resource('facturas', 'FacturaController');
+Route::resource('facturaproductos', 'FacturaProductoController');

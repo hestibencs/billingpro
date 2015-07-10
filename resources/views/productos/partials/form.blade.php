@@ -1,4 +1,4 @@
-<div class="col-sm-6">
+<div class="col-sm-12">
 	
 	<div class="form-group">
 		{!! Form::text('codigo', null, ['class' => 'form-control floating-label', 'placeholder' => 'Codigo:', 'required']) !!}
@@ -15,14 +15,14 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::text('marca', null, ['class' => 'form-control floating-label', 'placeholder' => 'Direccion:', 'required']) !!}
+		{!! Form::text('marca', null, ['class' => 'form-control floating-label', 'placeholder' => 'Marca:', 'required']) !!}
 		@if($errors->has('marca'))
 			<P class="text-danger">{{ $errors->first('marca') }}</P>
 		@endif
 	</div>
 
 	<div class="form-group">
-		{!! Form::text('pvp', null, ['class' => 'form-control floating-label', 'placeholder' => 'Ciudad:', 'required']) !!}
+		{!! Form::text('pvp', null, ['class' => 'form-control floating-label', 'placeholder' => 'Preico Venta Publico:', 'required']) !!}
 		@if($errors->has('pvp'))
 			<P class="text-danger">{{ $errors->first('pvp') }}</P>
 		@endif
@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::text('imagen', null, ['class' => 'form-control floating-label', 'placeholder' => 'Imagen:']) !!}
+		{!! Form::file('imagen', ['class' => 'form-control']); !!}
 		@if($errors->has('imagen'))
 			<P class="text-danger">{{ $errors->first('imagen') }}</P>
 		@endif
