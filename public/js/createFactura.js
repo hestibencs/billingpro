@@ -17,8 +17,6 @@ $(document).ready(function(){
 			$("#factura_id").val(result);
 			$("#aggProductoDisplay").slideToggle();
 
-//			console.log(result);
-
 		}).fail(function(result){
 			console.log(result);
 		});
@@ -33,12 +31,7 @@ $(document).ready(function(){
 		var url = form.attr('action');
 		var data = form.serialize();
 
-		console.log(url);
-		console.log(data);
-
 		$.post(url, data).done(function(result){
-
-			console.log(result);
 
 			var html = '';
 			var total = 0;
