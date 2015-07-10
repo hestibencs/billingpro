@@ -80,7 +80,8 @@ class ClienteController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		#return redirect('clientes');
+		return 'hace algo';
 	}
 
 }

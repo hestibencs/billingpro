@@ -20,6 +20,7 @@
 					<th>Correo Electronico</th>
 					<th>Contacto</th>
 					<th>Estado</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,6 +35,7 @@
 						<td>{{ $cliente->email }}</td>
 						<td>{{ $cliente->contacto }}</td>
 						<td>{{ $cliente->estado }}</td>
+						<td></td>
 					</tr>
 				@endforeach
 			</tbody>
