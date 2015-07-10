@@ -55,9 +55,11 @@
 			</div>
 		</div>
 	</nav>
+	
 
-	@yield('content')
-
+	<div class="container">
+		@yield('content')
+	</div>
 	<!-- Scripts -->
 
     {!! Html::script('bower_components/jquery/dist/jquery.min.js') !!}
